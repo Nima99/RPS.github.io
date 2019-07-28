@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RPS_regular</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- <script href="./assets/javascript/rps.js"></script> -->
+</head>
+<body>
+    
+    <div id="game">
+        <p>Press r, p, or scissors to start playing!</p>
+    </div>
+    
+    
+    <script type="text/javascript">
+
+        var options = ["r", "p", "s"];    
+        var wins = 0;
+        var losses = 0;
+        var ties =0;
+    
+    
+        document.onkeyup = function() {
+    var userguess = String.fromCharCode(event.keyCode).
+    toLowerCase();
+    // console.log(userguess);
+    
+    var computerGuess = options[Math.floor(Math.random()*options.
+    length)];
+    // console.log(computerGuess);
+    
+
+if (userguess=='r' || userguess=='p' || userguess=='s'){
+    if((userguess=='r') && (computerGuess=='s')) {
+        wins++;
+    }
+    if((userguess=='r') && (computerGuess=='p')) {
+        losses++;
+    }
+    if((userguess=='s') && (computerGuess=='p')) {
+        wins++;
+    }
+    if((userguess=='s') && (computerGuess=='r')) {
+        losses++;
+    }
+    if((userguess=='p') && (computerGuess=='s')) {
+        losses++;
+    }
+    if((userguess=='p') && (computerGuess=='r')) {
+        losses++;
+    }
+    if ((userguess==computerGuess)) {
+        ties++;
+        
+    }
+}   else {
+    alert("please choose r, p, or s");
+}
+
+var html = "<p>Press r, p, or to start playing</p>" +
+"<p>wins: " + wins + "</p>" +
+"<p>losses: " + losses + "</p>" +
+"<p>ties: " + ties + "</p>";
+
+document.querySelector('#game').innerHTML = html;
+
+}
+
+</script>
+    
+</body>
+</html>
